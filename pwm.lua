@@ -48,9 +48,14 @@ function initSharedMem()
   return 1
 end
 
-fa.pwm("init", PWM_CH_R, 1)
-fa.pwm("init", PWM_CH_L, 1)
-sleep(1000)
+res = fa.pwm("init", PWM_CH_R, 1)
+if(r ~= 1) then
+  return
+end
+res = fa.pwm("init", PWM_CH_L, 1)
+if(r ~= 1) then
+  return
+end
 
 local r = initSharedMem()
 if(r ~= 1) then
